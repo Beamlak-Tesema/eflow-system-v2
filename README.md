@@ -102,11 +102,11 @@ FROM_EMAIL=no-reply@example.com
    ```
 2. Apply schema:
    ```bash
-   psql -d eflow_db_2 -f /home/runner/work/eflow-system-v2/eflow-system-v2/server/eflow_db_2_schema.sql
+   psql -d eflow_db_2 -f server/eflow_db_2_schema.sql
    ```
 3. If needed for existing DBs, run migration scripts:
    ```bash
-   cd /home/runner/work/eflow-system-v2/eflow-system-v2/server
+   cd server
    node migrate-rbac.js
    node fix-db.js
    ```
@@ -118,7 +118,7 @@ FROM_EMAIL=no-reply@example.com
 ### Backend setup
 
 ```bash
-cd /home/runner/work/eflow-system-v2/eflow-system-v2/server
+cd server
 npm install
 npm run dev
 # or: npm start
@@ -129,7 +129,7 @@ Backend default URL: `http://localhost:5000`
 ### Frontend setup
 
 ```bash
-cd /home/runner/work/eflow-system-v2/eflow-system-v2/client
+cd client
 npm install
 npm start
 ```
@@ -218,14 +218,14 @@ The app will not behave exactly like localhost unless these are addressed:
 ### `react-scripts: not found`
 Install frontend dependencies:
 ```bash
-cd /home/runner/work/eflow-system-v2/eflow-system-v2/client
+cd client
 npm install
 ```
 
 ### Sharp runtime error (`Could not load the "sharp" module`)
 Common with unsupported Node/platform combos:
 ```bash
-cd /home/runner/work/eflow-system-v2/eflow-system-v2/server
+cd server
 npm install --include=optional sharp
 # or
 npm install --os=linux --cpu=x64 sharp
@@ -249,4 +249,3 @@ Use an LTS Node version (18/20) to reduce native module issues.
 - Move uploads to persistent/object storage.
 - Add backend startup validation for required env vars.
 - Add automated tests around workflow traversal edge cases (condition and parallel branches).
-
